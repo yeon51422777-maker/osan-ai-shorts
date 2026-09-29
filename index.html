@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="오산시 평생학습관 중장년 AI쇼츠 크리에이터 과정 5회차 강의안">
+<title>오산 AI쇼츠 크리에이터</title>
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<meta name="theme-color" content="#111318">
+<meta property="og:type" content="website">
+<meta property="og:title" content="오산시 중장년 AI쇼츠 크리에이터 과정">
+<meta property="og:description" content="10월 22일 ~ 11월 19일 · 매주 목요일 · 5회 | 내 캐릭터로 만드는 AI 유튜브 쇼츠">
+<meta property="og:image" content="https://yeon51422777-maker.github.io/osan-ai-shorts/og.png">
+<meta property="og:url" content="https://yeon51422777-maker.github.io/osan-ai-shorts/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;800&display=swap">
+<style>
+:root{
+  --paper:#F4F5F7;
+  --surface:#FFFFFF;
+  --ink:#171B24;
+  --ink-2:#4B5264;
+  --line:#DCE0E7;
+  --band:#111318;
+  --chip:#E8EAEF;
+  --chip-ink:#232838;
+  --prompt-bg:#141821;
+  --prompt-ink:#F1F3F7;
+  --hl:#FFD43B;
+  --hl-ink:#2B2200;
+  --tip:#EEF1F5;
+  --tip-ink:#2A3140;
+  --focus:#2F6FEB;
+  --on-acc:#111318;
+  /* 회차 색 */
+  --c0:#FFD43B; --t0:#8A6A00;
+  --c1:#FF6B5E; --t1:#C9362B;
+  --c2:#FFA940; --t2:#A85800;
+  --c3:#3DD68C; --t3:#12804A;
+  --c4:#5AA9FF; --t4:#1E66C8;
+  --c5:#B18CFF; --t5:#6F42D8;
+  --c6:#C3C8D2; --t6:#4B5264;
+  --acc:var(--c0); --acc-text:var(--t0);
+  --font:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0F1116; --surface:#181B22; --ink:#ECEEF3; --ink-2:#A9B0BF; --line:#2B303B;
+    --band:#000000; --chip:#232733; --chip-ink:#E3E6EE; --prompt-bg:#0B0D12; --prompt-ink:#EEF0F5;
+    --tip:#1C2029; --tip-ink:#D5DAE4; --focus:#7AA2FF;
+    --t0:var(--c0); --t1:var(--c1); --t2:var(--c2); --t3:var(--c3); --t4:var(--c4); --t5:var(--c5); --t6:var(--c6);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0F1116; --surface:#181B22; --ink:#ECEEF3; --ink-2:#A9B0BF; --line:#2B303B;
+  --band:#000000; --chip:#232733; --chip-ink:#E3E6EE; --prompt-bg:#0B0D12; --prompt-ink:#EEF0F5;
+  --tip:#1C2029; --tip-ink:#D5DAE4; --focus:#7AA2FF;
+  --t0:var(--c0); --t1:var(--c1); --t2:var(--c2); --t3:var(--c3); --t4:var(--c4); --t5:var(--c5); --t6:var(--c6);
+}
+/* 회차마다 메인 색 */
+#guide,[aria-controls="guide"]{--acc:var(--c0);--acc-text:var(--t0)}
+#s1,[aria-controls="s1"]{--acc:var(--c1);--acc-text:var(--t1)}
+#s2,[aria-controls="s2"]{--acc:var(--c2);--acc-text:var(--t2)}
+#s3,[aria-controls="s3"]{--acc:var(--c3);--acc-text:var(--t3)}
+#s4,[aria-controls="s4"]{--acc:var(--c4);--acc-text:var(--t4)}
+#s5,[aria-controls="s5"]{--acc:var(--c5);--acc-text:var(--t5)}
+#dict,[aria-controls="dict"]{--acc:var(--c6);--acc-text:var(--t6)}
+
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.75;-webkit-text-size-adjust:100%;word-break:keep-all;overflow-wrap:anywhere}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+
+/* 머리 */
+.top{padding-block:24px 8px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;letter-spacing:.04em;color:var(--ink-2)}
+.kicker::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.top h1{font-weight:800;font-size:clamp(26px,7.2vw,42px);line-height:1.3;letter-spacing:-.02em;margin:6px 0 8px}
+.buddy{display:inline-block;width:2.2em;margin-left:.2em;vertical-align:-.5em}
+.buddy img{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 6px rgba(0,0,0,.18));transform-origin:50% 90%}
+@media (prefers-reduced-motion:no-preference){
+  .buddy img{animation:bob 3.2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(5deg) translateY(-3px)}}
+}
+.top .meta{color:var(--ink-2);font-size:17px;margin:0}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+@media (max-width:560px){.links{grid-template-columns:1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:10px 14px;border-radius:14px;font-family:var(--font);font-weight:700;font-size:18px;text-decoration:none;text-align:center;border:2px solid var(--ink)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.line{background:var(--surface);color:var(--ink)}
+.btn .ext{font-size:15px;opacity:.7}
+button.btn{cursor:pointer;width:100%}
+
+/* 탭 + 진행 막대 */
+.tabs-wrap{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);margin-inline:-16px;padding:10px 16px 8px;border-bottom:1px solid var(--line)}
+.tabs{display:grid;gap:6px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.row5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.tab{border:0;background:var(--chip);color:var(--chip-ink);font-family:var(--font);font-weight:800;cursor:pointer;border-radius:14px}
+.tab small{display:block;font-weight:500;font-size:12px;opacity:.75;margin-top:2px;white-space:nowrap}
+.tab.wide{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:4px 10px;font-size:16px;line-height:1.15}
+.tab.wide small{display:inline;margin:0}
+.tab.wide::before{content:"";flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:var(--acc)}
+.tab.num{min-height:52px;padding:6px 2px 5px;font-size:clamp(14px,3.9vw,17px);line-height:1.1;text-align:center;border-bottom:4px solid var(--acc)}
+.tab[aria-selected="true"]{background:var(--acc);color:var(--on-acc)}
+.tab[aria-selected="true"]::before{background:var(--on-acc)}
+.tab[aria-selected="true"] small{opacity:.9}
+@media (max-width:480px){.tab.wide small{display:none}}
+.tab.wide{white-space:nowrap}
+.now{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:14px;font-weight:700;color:var(--ink-2)}
+.now b{color:var(--ink)}
+.bar{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.bar i{height:6px;border-radius:3px;background:var(--line)}
+.bar i.on{background:var(--acc)}
+.bar i:nth-child(1){--acc:var(--c1)} .bar i:nth-child(2){--acc:var(--c2)} .bar i:nth-child(3){--acc:var(--c3)} .bar i:nth-child(4){--acc:var(--c4)} .bar i:nth-child(5){--acc:var(--c5)}
+.bar i.cur{height:10px;margin-top:-2px}
+
+/* 제목 띠 */
+.band{background:var(--band);color:#FFFFFF;border-radius:20px;padding:20px 20px 22px;margin-top:22px;text-align:center;border-top:8px solid var(--acc)}
+.band .when{display:inline-block;background:var(--acc);color:var(--on-acc);font-size:15px;font-weight:800;border-radius:999px;padding:4px 14px}
+.band h2{font-weight:800;font-size:clamp(28px,7.4vw,38px);line-height:1.25;letter-spacing:-.02em;margin:10px 0 2px;text-wrap:balance}
+.band .sub{font-weight:700;font-size:clamp(19px,5vw,24px);color:var(--acc);margin:0;line-height:1.35}
+
+/* 결과물 */
+.result{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:2px solid var(--acc);border-radius:16px;padding:16px 18px;margin-top:16px}
+.result .dot{flex:0 0 auto;margin-top:6px;width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 5px color-mix(in srgb,var(--acc) 30%,transparent)}
+.result b{display:block;font-size:15px;color:var(--acc-text);letter-spacing:.02em}
+.result p{margin:2px 0 0;font-weight:700;font-size:19px}
+
+/* 목차 */
+h3.label{font-size:15px;letter-spacing:.04em;color:var(--acc-text);margin:28px 0 8px;font-weight:800}
+.toc{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:16px;counter-reset:toc}
+.toc li{counter-increment:toc;border-top:1px solid var(--line)}
+.toc li:first-child{border-top:0}
+.toc button{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;width:100%;min-height:54px;padding:10px 16px;background:none;border:0;color:var(--ink);font:500 18px/1.45 var(--font);text-align:left;cursor:pointer}
+.toc button::before{content:counter(toc);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--on-acc);font-weight:800;font-size:15px}
+.toc button::after{content:"›";color:var(--ink-2);font-size:22px}
+
+/* 단계 */
+.steps{counter-reset:step}
+.step{counter-increment:step;margin-top:36px;scroll-margin-top:170px}
+.step>h3{display:flex;gap:12px;align-items:center;font-size:23px;font-weight:800;line-height:1.35;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+.step>h3::before{content:counter(step);flex:0 0 auto;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--acc);color:var(--on-acc);font-size:19px}
+.step p{margin:8px 0}
+.do{margin:8px 0;padding-left:1.4em}
+.do li{margin:6px 0}
+.do li::marker{color:var(--acc-text);font-weight:800}
+.path{background:var(--chip);color:var(--chip-ink);border-radius:8px;padding:1px 8px;font-weight:700}
+mark{background:var(--hl);color:var(--hl-ink);padding:0 4px;border-radius:4px}
+.note{color:var(--ink-2);font-size:17px}
+
+/* 프롬프트 상자 */
+.prompt{background:var(--prompt-bg);color:var(--prompt-ink);border-radius:16px;margin:14px 0;overflow:hidden;border-top:4px solid var(--acc)}
+.prompt header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px 10px 16px;border-bottom:1px solid rgba(255,255,255,.12)}
+.prompt header span{font-size:15px;font-weight:800;color:var(--acc)}
+.copy{flex:0 0 auto;min-height:46px;min-width:96px;padding:0 16px;border-radius:12px;border:0;background:var(--acc);color:var(--on-acc);font:800 17px/1 var(--font);cursor:pointer}
+.copy.done{background:#8BE9B0}
+.prompt pre{margin:0;padding:14px 16px 16px;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font:500 17px/1.7 var(--font)}
+.prompt pre i{font-style:normal;color:var(--hl);border-bottom:2px dashed var(--hl)}
+
+/* 팁 · 막힐 때 · 숙제 */
+.tip{background:var(--tip);color:var(--tip-ink);border-radius:14px;padding:14px 16px;margin:14px 0;border-left:5px solid var(--acc)}
+.tip b{display:block;margin-bottom:2px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:14px 0}
+summary{cursor:pointer;min-height:52px;display:flex;align-items:center;padding:10px 16px;font-weight:700;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;font-size:24px;line-height:1;color:var(--acc-text)}
+details[open] summary::after{content:"−"}
+details>div{padding:0 16px 12px}
+.hw{background:var(--surface);border:2px dashed var(--acc-text);border-radius:16px;padding:16px 18px;margin-top:36px}
+.hw h3{margin:0 0 8px;font-size:20px;font-weight:800}
+.check{display:flex;gap:12px;align-items:flex-start;padding:8px 0;cursor:pointer}
+.check input{flex:0 0 auto;width:26px;height:26px;margin-top:3px;accent-color:var(--acc-text)}
+
+/* 표 */
+.tbl{overflow-x:auto;margin:12px 0;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:460px;font-size:16px}
+th,td{text-align:left;padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;background:var(--chip);color:var(--chip-ink);font-size:15px}
+td code{font-family:var(--font);font-weight:700;background:var(--chip);color:var(--chip-ink);padding:1px 6px;border-radius:6px}
+
+/* 로드맵 · 준비물 · 사례 */
+.road{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.road li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.road li:nth-child(1){--acc:var(--c1)} .road li:nth-child(2){--acc:var(--c2)} .road li:nth-child(3){--acc:var(--c3)} .road li:nth-child(4){--acc:var(--c4)} .road li:nth-child(5){--acc:var(--c5)}
+.road .no{font-weight:800;font-size:24px;line-height:1;background:var(--acc);color:var(--on-acc);border-radius:12px;padding:8px 10px;text-align:center;min-width:56px}
+.road .no small{display:block;font-size:12px;font-weight:700;margin-top:4px}
+.road b{font-size:19px}
+.road p{margin:2px 0 0;color:var(--ink-2);font-size:16px}
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:0;list-style:none;margin:0}
+.kit li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.formula{display:grid;gap:8px;padding:0;margin:0;list-style:none;counter-reset:f}
+.formula li{counter-increment:f;display:grid;grid-template-columns:32px 1fr;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.formula li::before{content:counter(f);font-weight:800;color:var(--acc-text)}
+.cases{display:grid;gap:10px;margin:12px 0}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.case .views{font-variant-numeric:tabular-nums;font-weight:800;color:var(--acc-text)}
+.case p{margin:4px 0 0;font-size:16px;color:var(--ink-2)}
+footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
+[role="tabpanel"]:focus{outline:none}
+@media (prefers-reduced-motion:no-preference){.copy{transition:background .2s}html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="kicker">오산시 평생학습관</span>
+    <h1>오산시 중장년 AI쇼츠<br>크리에이터 과정<span class="buddy"><img src="data:image/webp;base64,UklGRmZAAABXRUJQVlA4WAoAAAAQAAAAKwEAFgEAQUxQSOkQAAABCceR5MZNLUDCgGuVf8AAT8v/iP5PAOYJkrC+cYo1YEYCm0iMhrZBSWLdPiuaN8DasNBtmIvYhzk9gOaDOAP3Ac+giohTInJFF0G/wEUQ53CRXMIb8C64RP7S9O/RX4R0v0CSnmPyY6qq7q0d0lHTEzoBs318ZmCovwNyMKymmZ8lhsK2bZtI/3+ddBk9ICImoLYZJdCOoPdq7XjtWKnDSyD7XgNqE3y541M2Q3w8yWun54Qo4DeIMcKYUGPM/Ar+lQxClMD2TZYZxgI3mGpbQEH6BGpdFcCrbNpIklTDH8vGC2GzI3IQ9mkCNXnEBEyAb2vb1jbStu04zotF5qSTSnUlzXAz88NM678EDEUB29J1ToQcO5E0GRETYFnbtrWNpOeV7VBz926Y9rTC9Szn6mOco+hh5sarmMLsmGJZsuD/30WgUl3p6F9GxAQQrfO2GKGAzG3uNDtyUYpRkSLikk8hGOuMMaRuNuvNsliUTRuNEVGMsdansiqdd8Y46+S20S6fHB2Nzma55nFAaF2I3sSYjGqnnSpEFbTehlAX89Hw+PAwCXIedqRx3sWYUswk0d3cdLkltQVBQMTGGENdzcenRxOfu04Hm3EhpaKM0Tkn2rVtt+3U0GRtkVVVcNsoQrs4fXVS+3ZjhhitjzF5ZyZJoISq5LalsexU25y7nKEEYHGp8cVsvirz0hsOLLoillUy3c2mMDm3AEx0UNWu7douZ1XskqYoy7/5auapA4o+paIM1Pb6+ua6cza4GAnQNHUTzSu0iMF3H9+uNb8c9RaBuwTFl1WVTLe+urrqBDQmFVY11E1rvoyMVbr874/Zvg4VUBAKBQjcDcTG6aRKuLl+/2GzUW+8t+iUXRfNlze4d//5roz2VUrjnBNBxrZqWkD4zudSLGeToFf///5qS7HOioJ5m7Hv5Pbft8ssy0AgQ93UdeWDpxqcDw9Px2XLHV98qpppZW/ev/uwyRqsiM3dtsMhKu3Vs+1ypT9YXXXNbLGcJd3mrEbUt4uzw8dPt47Oigi6o0msylmTZP3+/663mdZRc6s4XOrs4fNab3/tB6vjKS/fXm7bLgPE7ViMjnYeP3y4fx6BZN+in0wns4Drt+8/dprFSu5w2ATD+2fv/+RXH/r3a8WDjQBiOXzy+efPDseq6Nm+XJzNanP5/2+vtwo1UMUzGPO1n374618qnrA63b7/8euC2p/IUNeTuvz+bBEtYUoENKMEWDdkENQnTz/+/+d79d1InCua+XEjH2feiYACUQuDeIUGQb7334/+c9iCfYcuubI5Wph3150AxAtsBGH3L7//9Hrbb+hiDOViZd+tFS99PPj39t1Nq/2FqU5FsyourzJefIs49e376057iqvK0CzKzYcOvdBI2fDm/U3WHmJjmaazlP9vo+iNlLJc/9//Su9gqOfVvLbvLjN6JAHjtv9/7NgvbIzFdF6//9Cif8bjQbFYOvjO4FLZzOv8PzeK/mmx8UY7X7ah7QdMk7JcpMt3LfqplfUp8qJuux4g9WJSF+1/rxV9VdbA85NccqsvnammRekv327RZ4U0HSvbtnvh3KJ2N28/dOi9bkPO3bZ7yagyk6v/3yh6r9V7NbdU3eSuJDjrm7cfOvRhUZ29ii267dOTxNoKjBX05l59OpoVli8RJSQaIXp1W44mwfIFErpgepey5agM1rw0IjAxeKJ/V9MyeL4sbYctk7Xo4S7qMnnDF0Q2G6vqiF5unC9S8HwxxLZdtIreLqlpCudeCBpeXaHXS1GFWJgXISv18kZ7nVrvfaDy+dOsylbR7ynOF85Yee5Cp0JH9H76pg7Omecti+orQwxB560YaykWQRkEw1B1K94/a27WGwxF5o0YaY+Qcqyr+VU7GNCtu832Znuc3LRFPl/rcEDXXa031xNK4iez1STQJV01ddveShqnq6Opp1uGWFWLpo23D6vl8awwHcPUy7xugm8dKarCWXYMaJZFUzetbxcbYxGtYni6rduybuOtIrEI0RkMUYdmXlVNEKGzsfBWyAGCq+kiL2sPWstYOZIYpPVkNJyVh4UC4mZNVbZ0UxeT48lCngsQriwd666Ci+G08IbPQs6Qsqkt3FVoZuOZFTwPaopJFUKgu7qaTbxBfga01TRtknCHQeUkyfOgppomK7ptPUtWhAenZKgKI+44tHXyBnpotK70wuFDXThjcOjGF6UjSeeNlbNG9bBMmkyTERlAUgQrxEFnW68aRxId2BdGaXlACltMggwkhCjWmsNRlVR4EQoGsa1ijNHooWTYwomCGMixqcsU3KHQFZUDOZikakJwnodBxqZyJDGYbemttciHoERIrrHp0O39P1in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" width="300" height="279" alt="강사 캐릭터 얼굴"></span></h1>
+    <p class="meta">10월 22일 ~ 11월 19일 · 매주 목요일 오전 10시 ~ 오후 1시 · 5회</p>
+    <div class="links">
+      <a class="btn solid" href="https://padlet.com/eduleader/ai-s02406vvnhm8ctdo0n4z" target="_blank" rel="noopener noreferrer">자료모음 패들렛 <span class="ext">↗</span></a>
+      <a class="btn line" href="https://gemini.google.com/gem/2f64ff578193" target="_blank" rel="noopener noreferrer">쇼츠 기획 PD (잼) <span class="ext">↗</span></a>
+      <a class="btn line" href="https://labs.google/fx/ko/tools/flow" target="_blank" rel="noopener noreferrer">Google Flow <span class="ext">↗</span></a>
+    </div>
+  </header>
+
+  <div class="tabs-wrap">
+    <nav class="tabs" role="tablist" aria-label="강의 메뉴">
+      <div class="row2" role="presentation">
+        <button class="tab wide" role="tab" id="t-guide" aria-controls="guide">과정 안내<small>준비물 · 주소</small></button>
+        <button class="tab wide" role="tab" id="t-dict" aria-controls="dict">캡컷 사전<small>메뉴 찾아보기</small></button>
+      </div>
+      <div class="row5" role="presentation">
+        <button class="tab num" role="tab" id="t-s1" aria-controls="s1">1회차<small>10/22</small></button>
+        <button class="tab num" role="tab" id="t-s2" aria-controls="s2">2회차<small>10/29</small></button>
+        <button class="tab num" role="tab" id="t-s3" aria-controls="s3">3회차<small>11/5</small></button>
+        <button class="tab num" role="tab" id="t-s4" aria-controls="s4">4회차<small>11/12</small></button>
+        <button class="tab num" role="tab" id="t-s5" aria-controls="s5">5회차<small>11/19</small></button>
+      </div>
+    </nav>
+    <div class="now" aria-live="polite"><span id="nowText"><b>과정 안내</b></span><div class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+  </div>
+
+  <!-- 과정 안내 -->
+  <section id="guide" role="tabpanel" aria-labelledby="t-guide" tabindex="-1">
+    <div class="band">
+      <div class="when">5주 과정 한눈에 보기</div>
+      <h2>폰 하나로 만드는</h2>
+      <p class="sub">나만의 AI 유튜브 쇼츠</p>
+    </div>
+    <div class="result"><span class="dot"></span><div><b>과정이 끝나면</b><p>내 캐릭터가 있는 유튜브 채널과 쇼츠 2~3편이 생겨요</p></div></div>
+    <div class="tip"><b>따로 찍어 올 필요 없어요</b>쇼츠는 AI로 만든 그림과 영상으로 만들어요. 얼굴을 드러내지 않아도 돼요.</div>
+
+    <h3 class="label">5회 순서</h3>
+    <ol class="road">
+      <li><div class="no">1<small>10/22</small></div><div><b>내 캐릭터 만들기 · 캡컷 맛보기</b><p>챗GPT와 제미나이로 내 캐릭터 만들기, 패들렛에 올리기, 캡컷 설치</p></div></li>
+      <li><div class="no">2<small>10/29</small></div><div><b>캡컷 실습</b><p>기본 메뉴 익히기, 영상 2개와 사진 5장으로 느낌이 다른 영상 2편</p></div></li>
+      <li><div class="no">3<small>11/5</small></div><div><b>기획하고 그림 만들기</b><p>쇼츠 기획 PD(잼)로 기획하고 장면 그림 만들기</p></div></li>
+      <li><div class="no">4<small>11/12</small></div><div><b>쇼츠 완성하기</b><p>Flow로 그림을 움직이는 영상으로 바꾸고 캡컷으로 완성</p></div></li>
+      <li><div class="no">5<small>11/19</small></div><div><b>쇼츠 만들고 유튜브에 올리기</b><p>같은 캐릭터로 한 편 더, 채널 만들고 올리기, 상영회</p></div></li>
+    </ol>
+
+    <h3 class="label">매 시간 준비물</h3>
+    <ul class="kit">
+      <li><b>스마트폰과 충전기</b><br><span class="note">배터리가 금방 닳아요</span></li>
+      <li><b>구글 아이디·비밀번호</b><br><span class="note">로그인에서 시간이 가장 많이 걸려요</span></li>
+      <li><b>앱 4개</b><br><span class="note">챗GPT · 제미나이(Gemini) · 캡컷(CapCut) · 유튜브</span></li>
+      <li><b>내 얼굴 사진 1장</b> (1회차)<br><span class="note">정면으로 밝게 나온 사진</span></li>
+    </ul>
+    <div class="tip"><b>수업 전에 폰 설정 두 가지</b>글자 크기를 한 단계 키워 두세요. 수업 중에는 방해금지 모드로 알림을 꺼 두면 편해요.</div>
+
+    <h3 class="label">자주 쓰는 주소</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>이름</th><th>주소 (눌러서 열기)</th><th>언제</th></tr></thead>
+      <tbody>
+        <tr><td>자료모음 패들렛</td><td><a href="https://padlet.com/eduleader/ai-s02406vvnhm8ctdo0n4z" target="_blank" rel="noopener noreferrer">padlet.com/eduleader/ai-s02406vvnhm8ctdo0n4z</a></td><td>매 시간 작품 올리기</td></tr>
+        <tr><td>쇼츠 기획 PD (잼)</td><td><a href="https://gemini.google.com/gem/2f64ff578193" target="_blank" rel="noopener noreferrer">gemini.google.com/gem/2f64ff578193</a></td><td>3~5회차 기획과 그림</td></tr>
+        <tr><td>Google Flow</td><td><a href="https://labs.google/fx/ko/tools/flow" target="_blank" rel="noopener noreferrer">labs.google/fx/ko/tools/flow</a></td><td>4·5회차 AI 영상</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="label">이 강의안 보는 법</h3>
+    <p>위쪽 회차 버튼을 누르면 그날 내용이 나와요. 검은 상자의 글은 <b>「복사」</b>를 한 번 누르면 통째로 복사돼요. 챗GPT나 제미나이에 붙여 넣으세요. <mark>노란 밑줄</mark> 부분은 내 이야기로 바꿔 쓰는 자리예요.</p>
+  </section>
+
+  <!-- 1회차 -->
+  <section id="s1" role="tabpanel" aria-labelledby="t-s1" tabindex="-1" hidden>
+    <div class="band">
+      <div class="when">1회차 · 10월 22일 (목)</div>
+      <h2>내 캐릭터 만들기</h2>
+      <p class="sub">그리고 캡컷 맛보기</p>
+    </div>
+    <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>나를 닮은 3D 캐릭터와 표정·포즈 9개, 패들렛 내 이름 칸에 올리기</p></div></div>
+
+    <h3 class="label">오늘 배울 내용</h3>
+    <ol class="toc">
+      <li><button type="button" data-go="s1-1">5회 과정 한눈에 보기</button></li>
+      <li><button type="button" data-go="s1-2">자료모음 패들렛 들어가기</button></li>
+      <li><button type="button" data-go="s1-3">챗GPT로 기본 아바타 만들기</button></li>
+      <li><button type="button" data-go="s1-4">제미나이로 옷·표정·포즈 9개 만들기</button></li>
+      <li><button type="button" data-go="s1-5">포즈 하나 골라 다듬기</button></li>
+      <li><button type="button" data-go="s1-6">패들렛 내 이름 칸에 올리기</button></li>
+      <li><button type="button" data-go="s1-7">캡컷 설치하고 맛보기</button></li>
+    </ol>
+
+    <div class="steps">
+      <div class="step" id="s1-1">
+        <h3>5회 과정 한눈에 보기</h3>
+        <p>1회차에 만든 내 캐릭터가 5주 내내 쇼츠의 주인공이 돼요. 촬영 없이 AI로 만든 그림과 영상으로 쇼츠를 만들어요.</p>
+        <p><button class="btn line" type="button" data-tab="guide">5회 순서와 준비물 보기</button></p>
+      </div>
+
+      <div class="step" id="s1-2">
+        <h3>자료모음 패들렛 들어가기</h3>
+        <p>수업 자료와 여러분이 만든 작품을 모두 여기에 모아요. 서로 구경하고 칭찬 댓글도 달아요.</p>
+        <p><a class="btn solid" href="https://padlet.com/eduleader/ai-s02406vvnhm8ctdo0n4z" target="_blank" rel="noopener noreferrer">자료모음 패들렛 열기</a></p>
+        <p class="note">주소를 직접 입력할 때 : padlet.com/eduleader/ai-s02406vvnhm8ctdo0n4z</p>
+        <p>들어가면 <b>내 이름이 적힌 칸</b>을 찾아 두세요. 오늘 만든 캐릭터를 그 칸에 올려요.</p>
+      </div>
+
+      <div class="step" id="s1-3">
+        <h3>챗GPT로 기본 아바타 만들기</h3>
+        <ol class="do">
+          <li><span class="path">ChatGPT</span> 앱 설치 → <span class="path">Google로 계속하기</span>로 로그인</li>
+          <li>입력창 왼쪽 <span class="path">+</span> → <span class="path">사진</span> → 내 얼굴 사진 1장 고르기</li>
+          <li>아래 상자의 <b>「복사」</b>를 누르고, 챗GPT 입력창에 붙여 넣어 보내기</li>
+        </ol>
+        <div class="prompt"><header><span>복사해서 쓰기 · 기본 아바타</span><button class="copy" type="button">복사</button></header><pre>[사용자 사진의 인물]을 기반으로 한, 3D 치비 매트 아티스트 토이 렌더링.
+
+캐릭터 디자인: 핵심 스타일: 3D 치비(Chibi), 매트(Matte) 질감
+
+비율: 극단적으로 왜곡된 머리:몸 비율 (약 1:1), 큰 눈, 작은 코와 입.
+이목구비: [사용자 사진의 눈동자 색]을 가진 거대하고 반짝이는 눈. 매끄럽고 주름 없는 도자기 같은 피부.
+
+포즈 및 구성:
+구성: 전신 또는 3/4 샷, 캐릭터 중심 배치. 하얀색 반팔 티셔츠. 청바지
+
+렌더링 및 기술 세부 사항:
+조명: 부드럽고 확산된 소프트 스튜디오 조명, 모든 방향에서 균일하게 비추어 그림자를 최소화.
+배경: 완전히 평평하고 깨끗한 흰색 배경.</pre></div>
+        <div class="tip"><b>[ ] 괄호는 그대로 두세요</b>챗GPT가 올린 사진을 보고 알아서 채워요. 흰 티셔츠와 청바지를 입은 기본 아바타가 나와요.</div>
+        <ol class="do" start="4">
+          <li>그림이 나오면 누르고 <span class="path">저장</span> (또는 길게 눌러 사진에 저장)</li>
+        </ol>
+        <details><summary>제 얼굴이랑 안 닮았어요</summary><div><p>"눈매를 사진과 더 비슷하게", "머리 모양을 단발로"처럼 <b>한 가지씩</b> 말해 보세요. 한 번에 여러 개를 바꾸면 오히려 더 달라져요.</p></div></details>
+        <details><summary>그림이 안 나오거나 "한도" 안내가 떠요</summary><div><p>챗GPT 무료 계정은 하루에 만들 수 있는 그림 수가 적어요. 기다렸다가 다시 하거나, 같은 글을 제미나이에 넣어도 돼요.</p></div></details>
+        <div class="tip"><b>내 사진만 올려요</b>가족이나 손주, 다른 사람 사진은 올리지 마세요.</div>
+      </div>
+
+      <div class="step" id="s1-4">
+        <h3>제미나이로 옷·표정·포즈 9개 만들기</h3>
+        <ol class="do">
+          <li><span class="path">Gemini</span> 앱 열기 → 입력창 왼쪽 <span class="path">+</span> → 방금 저장한 아바타 그림 올리기</li>
+          <li>아래 상자를 복사해 붙여 넣고, <mark>노란 밑줄</mark>만 내 이야기로 바꿔서 보내기</li>
+        </ol>
+        <div class="prompt"><header><span>복사해서 쓰기 · 옷과 표정·포즈 9개</span><button class="copy" type="button">복사</button></header><pre>나는 <i>오산에 사는 60대, 텃밭 가꾸기를 좋아하는 사람</i>이야.
+그래서 평소에 <i>초록 체크 셔츠, 밀짚모자, 청바지, 흰 운동화</i> 차림이야.
+이미지를 변경해 줘.
+
+그리고 나는 <i>다정하면서도 유쾌한</i> 사람으로 유명해.
+나를 표현한 글을 보고 내 얼굴 표정과 포즈를 9개 제작해 줘.
+나는 주로 <i>텃밭 꿀팁</i>을 쇼츠로 알려 줄 거야.
+머리 끝부분 지저분한 부분은 부드럽게 처리해 줘.</pre></div>
+        <div class="tip"><b>옷은 색과 무늬로 설명해요</b>유튜브에 올릴 캐릭터라서 상표 로고는 넣지 않는 게 좋아요.</div>
+        <details><summary>그림 없이 글로만 대답해요</summary><div><p>글 맨 앞에 "이미지로 생성해서 그려 주세요:"를 붙여 다시 보내 보세요.</p></div></details>
+      </div>
+
+      <div class="step" id="s1-5">
+        <h3>포즈 하나 골라 다듬기</h3>
+        <p>9개 중에서 채널 대표 모습이 될 포즈를 하나 골라요. 같은 대화창에 이어서 보내요.</p>
+        <div class="prompt"><header><span>복사해서 쓰기 · 대표 포즈</span><button class="copy" type="button">복사</button></header><pre>9개 중 <i>5번</i> 포즈로 한 장만 크게 다시 그려 줘.
+얼굴과 옷은 지금과 똑같이 하고, 흰 배경, 전신, 세로 9:16, 그림 안에 글자 없이.</pre></div>
+        <p>더 다듬고 싶으면 <b>한 번에 한 가지씩</b> 말해요.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>다듬을 것</th><th>이렇게 말해요</th></tr></thead>
+          <tbody>
+            <tr><td>포즈</td><td>"한 손을 흔들며 인사하는 포즈로"</td></tr>
+            <tr><td>표정</td><td>"더 활짝 웃는 얼굴로"</td></tr>
+            <tr><td>옷</td><td>"셔츠 위에 앞치마를 둘러 줘"</td></tr>
+            <tr><td>색</td><td>"셔츠 색을 하늘색으로"</td></tr>
+            <tr><td>디테일</td><td>"머리카락 끝을 더 매끈하게"</td></tr>
+          </tbody>
+        </table></div>
+        <p>마음에 들면 저장해요. 오늘 저장할 그림은 <b>기본 아바타, 포즈 9개, 대표 포즈</b> 이렇게 세 장이에요.</p>
+      </div>
+
+      <div class="step" id="s1-6">
+        <h3>패들렛 내 이름 칸에 올리기</h3>
+        <ol class="do">
+          <li>자료모음 패들렛 열기 → <b>내 이름이 적힌 칸</b> 찾기</li>
+          <li>그 칸 아래의 <span class="path">+</span> 누르기 → 대표 포즈 그림 올리기</li>
+          <li>제목에 캐릭터 이름, 본문에 아래 세 줄 소개 → <span class="path">게시</span></li>
+        </ol>
+        <div class="prompt"><header><span>패들렛에 쓸 세 줄 소개</span><button class="copy" type="button">복사</button></header><pre>저는 <i>오산에 사는 60대, 텃밭 가꾸기가 취미인 김○○</i>입니다.
+제 캐릭터는 <i>다정하고 유쾌한 텃밭지기</i>예요.
+<i>텃밭 꿀팁을 또래 친구들에게 알려 주는</i> 쇼츠를 만들고 싶어요.</pre></div>
+        <p class="note">다른 칸에 잘못 올렸다면 게시물의 <span class="path">⋯</span> 메뉴에서 옮기거나 지우고 다시 올리면 돼요.</p>
+      </div>
+
+      <div class="step" id="s1-7">
+        <h3>캡컷 설치하고 맛보기</h3>
+        <ol class="do">
+          <li>플레이스토어(아이폰은 앱스토어)에서 <span class="path">CapCut</span> 설치 → 구글 계정으로 로그인</li>
+          <li><span class="path">새 동영상</span> → 대표 포즈 그림 선택 → <span class="path">추가</span></li>
+          <li>아래 메뉴 <span class="path">비율 → 9:16</span> (쇼츠는 세로!)</li>
+          <li><span class="path">텍스트 → 텍스트 추가</span> → "<mark>안녕하세요, 텃밭지기예요</mark>" → 두 손가락으로 크게</li>
+          <li>그림 클립 누르기 → <span class="path">애니메이션 → 콤보</span>에서 천천히 커지는 효과 하나</li>
+          <li>오른쪽 위 <span class="path">1080P</span> 확인 → 내보내기 버튼(↑) → 갤러리에 저장</li>
+        </ol>
+        <div class="tbl"><table>
+          <thead><tr><th>처음 듣는 말</th><th>뜻</th></tr></thead>
+          <tbody>
+            <tr><td>미리보기</td><td>위쪽, 완성될 영상이 보이는 화면</td></tr>
+            <tr><td>타임라인</td><td>가운데 흰 세로선이 있는 작업 줄</td></tr>
+            <tr><td>클립</td><td>타임라인 위의 사진·영상 한 조각</td></tr>
+            <tr><td>분할</td><td>흰 세로선 자리에서 클립을 둘로 자르기</td></tr>
+            <tr><td>내보내기</td><td>다 만든 것을 영상 파일로 저장하기</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><b>캡컷은 무료로 충분해요</b>보석(💎)이나 Pro 표시가 붙은 것만 유료예요. 이 표시만 피하면 돼요.</div>
+      </div>
+    </div>
+
+    <div class="hw">
+      <h3>다음 시간까지</h3>
+      <label class="check"><input type="checkbox" id="hw1a"><span>기본 아바타, 포즈 9개, 대표 포즈 그림이 갤러리에 있는지 확인하기</span></label>
+      <label class="check"><input type="checkbox" id="hw1b"><span>패들렛 내 이름 칸에 캐릭터가 올라갔는지 확인하기</span></label>
+    </div>
+  </section>
+
+  <!-- 2회차 -->
+  <section id="s2" role="tabpanel" aria-labelledby="t-s2" tabindex="-1" hidden>
+    <div class="band">
+      <div class="when">2회차 · 10월 29일 (목)</div>
+      <h2>캡컷 실습</h2>
+      <p class="sub">같은 재료, 다른 느낌 영상 2편</p>
+    </div>
+    <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>영상 2개와 사진 5장으로 만든, 분위기가 다른 쇼츠 2편</p></div></div>
+
+    <h3 class="label">오늘 배울 내용</h3>
+    <ol class="toc">
+      <li><button type="button" data-go="s2-1">실습 재료 준비하기</button></li>
+      <li><button type="button" data-go="s2-2">캡컷 기본 메뉴 알아보기</button></li>
+      <li><button type="button" data-go="s2-3">새 프로젝트 만들고 재료 불러오기</button></li>
+      <li><button type="button" data-go="s2-4">기본 편집 : 자르기 · 순서 · 소리</button></li>
+      <li><button type="button" data-go="s2-5">영상 ① 차분한 느낌으로 만들기</button></li>
+      <li><button type="button" data-go="s2-6">영상 ② 경쾌한 느낌으로 만들기</button></li>
+      <li><button type="button" data-go="s2-7">두 영상 저장하고 패들렛에 올리기</button></li>
+    </ol>
+
+    <div class="steps">
+      <div class="step" id="s2-1">
+        <h3>실습 재료 준비하기</h3>
+        <div class="tbl"><table>
+          <thead><tr><th>재료</th><th>개수</th><th>어디서</th></tr></thead>
+          <tbody>
+            <tr><td>영상</td><td>2개</td><td>자료모음 패들렛의 실습 자료 또는 내 폰 앨범</td></tr>
+            <tr><td>이미지 또는 사진</td><td>5장</td><td>1회차 캐릭터 그림, 내 폰 사진, 자료모음 패들렛의 실습 자료</td></tr>
+          </tbody>
+        </table></div>
+        <p>패들렛에서 받은 자료는 게시물을 열고 저장하면 폰 앨범에 들어가요. 캡컷에서 고르기 쉽게 <b>앨범에 모아 두세요</b>.</p>
+      </div>
+
+      <div class="step" id="s2-2">
+        <h3>캡컷 기본 메뉴 알아보기</h3>
+        <p>편집 화면은 세 부분이에요. 위는 <b>미리보기</b>, 가운데는 <b>타임라인</b>(흰 세로선이 지금 보고 있는 자리), 맨 아래는 <b>메뉴</b>예요. 메뉴는 옆으로 밀면 더 나와요.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>아래 메뉴</th><th>하는 일</th></tr></thead>
+          <tbody>
+            <tr><td><span class="path">편집</span></td><td>클립 자르기(분할), 속도, 볼륨, 삭제, 교체</td></tr>
+            <tr><td><span class="path">오디오</span></td><td>배경음악(사운드), 효과음(사운드 효과), 받은 음악 가져오기</td></tr>
+            <tr><td><span class="path">텍스트</span></td><td>자막 넣기, 자막 모양 바꾸기, 글자 움직이기</td></tr>
+            <tr><td><span class="path">스티커</span></td><td>움직이는 그림 붙이기</td></tr>
+            <tr><td><span class="path">오버레이</span></td><td>영상 위에 사진·영상을 한 겹 더 올리기</td></tr>
+            <tr><td><span class="path">효과</span></td><td>반짝임, 흔들림 같은 화면 효과</td></tr>
+            <tr><td><span class="path">필터</span></td><td>색감을 한 번에 바꾸기</td></tr>
+            <tr><td><span class="path">조정</span></td><td>밝기, 대비, 채도 손보기</td></tr>
+            <tr><td><span class="path">비율</span></td><td>화면 모양. 쇼츠는 9:16</td></tr>
+            <tr><td><span class="path">캔버스</span></td><td>빈 공간의 배경 색이나 흐림</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><b>클립을 누르면 메뉴가 바뀌어요</b>아무것도 누르지 않으면 전체 메뉴가, 클립을 누르면 그 클립을 고치는 메뉴가 나와요. 되돌리려면 화면의 되돌리기 화살표(↶)를 누르세요.</div>
+      </div>
+
+      <div class="step" id="s2-3">
+        <h3>새 프로젝트 만들고 재료 불러오기</h3>
+        <ol class="do">
+          <li><span class="path">새 동영상</span> → 영상 2개와 사진 5장을 <b>보여 줄 순서대로</b> 누르기 → <span class="path">추가</span></li>
+          <li><span class="path">비율 → 9:16</span> 먼저! 다 만든 뒤 바꾸면 자막 위치가 모두 틀어져요.</li>
+        </ol>
+      </div>
+
+      <div class="step" id="s2-4">
+        <h3>기본 편집 : 자르기 · 순서 · 소리</h3>
+        <div class="tbl"><table>
+          <thead><tr><th>하고 싶은 것</th><th>이렇게</th></tr></thead>
+          <tbody>
+            <tr><td>길이 줄이기</td><td>클립 누르기 → 양쪽 흰 손잡이를 끌기</td></tr>
+            <tr><td>둘로 자르기</td><td>흰 세로선을 자를 곳에 두고 <span class="path">분할</span></td></tr>
+            <tr><td>지우기</td><td>클립 누르기 → <span class="path">삭제</span></td></tr>
+            <tr><td>순서 바꾸기</td><td>클립을 길게 누른 채 원하는 자리로 끌기</td></tr>
+            <tr><td>원래 소리 끄기</td><td>타임라인 맨 앞 <span class="path">클립 오디오 음소거</span></td></tr>
+            <tr><td>재료 바꾸기</td><td>클립 누르기 → <span class="path">교체</span></td></tr>
+          </tbody>
+        </table></div>
+        <p>영상은 가장 좋은 부분 3~5초만, 사진은 2~3초로 맞추면 20초 안팎이 돼요. 가장 멋진 장면은 맨 앞에 두세요.</p>
+        <div class="tip"><b>여기까지 만든 걸 복제해 두세요</b>편집 화면을 나와 캡컷 첫 화면의 프로젝트 목록에서 이 프로젝트의 <span class="path">⋯</span> → <span class="path">복제</span>. 하나는 영상 ①, 하나는 영상 ②로 써요.</div>
+      </div>
+
+      <div class="step" id="s2-5">
+        <h3>영상 ① 차분한 느낌으로 만들기</h3>
+        <ol class="do">
+          <li>사진은 3초, 영상은 5초로 넉넉하게</li>
+          <li><b>전환</b> : 클립 사이의 작은 네모(▢)를 누르기 → 부드럽게 겹치는 전환 하나 → <span class="path">모두 적용</span></li>
+          <li><b>필터</b> : <span class="path">필터</span> → 따뜻한 느낌 하나 → 강도는 절반 정도</li>
+          <li><b>자막</b> : <span class="path">텍스트 추가</span> → <span class="path">스타일</span>에서 획 끄고 글로우만, 명조체 → <span class="path">애니메이션 → 인</span>에서 페이드 인</li>
+          <li><b>음악</b> : <span class="path">오디오 → 사운드</span>에서 "잔잔한", "피아노"로 검색</li>
+        </ol>
+      </div>
+
+      <div class="step" id="s2-6">
+        <h3>영상 ② 경쾌한 느낌으로 만들기</h3>
+        <p>복제해 둔 프로젝트를 열어요.</p>
+        <ol class="do">
+          <li>사진은 1.5~2초로 짧게</li>
+          <li><b>속도</b> : 영상 클립 누르기 → <span class="path">속도</span> → 1.5배</li>
+          <li><b>전환</b> : 없이 바로 넘기거나, 빠른 전환 하나만</li>
+          <li><b>자막</b> : 굵은 글씨에 검정 획, 크게 → <span class="path">애니메이션 → 인</span>에서 튀어나오는 효과</li>
+          <li><b>효과음</b> : <span class="path">오디오 → 사운드 효과</span>에서 <code>Pop</code>, <code>whoosh</code>를 두세 곳에</li>
+          <li><b>화면 효과</b> : <span class="path">효과</span> → 반짝이는 효과 하나를 짧게</li>
+          <li><b>음악</b> : "신나는", "happy"로 검색</li>
+        </ol>
+        <div class="tbl"><table>
+          <thead><tr><th>설정</th><th>영상 ① 차분하게</th><th>영상 ② 경쾌하게</th></tr></thead>
+          <tbody>
+            <tr><td>사진 길이</td><td>3초</td><td>1.5~2초</td></tr>
+            <tr><td>영상 속도</td><td>그대로</td><td>1.5배</td></tr>
+            <tr><td>전환</td><td>부드럽게 겹치기</td><td>없거나 빠르게</td></tr>
+            <tr><td>색감</td><td>따뜻한 필터</td><td>원래 색 + 반짝임 효과</td></tr>
+            <tr><td>자막</td><td>글로우 명조체, 페이드 인</td><td>굵은 글씨, 튀어나오기</td></tr>
+            <tr><td>소리</td><td>잔잔한 피아노</td><td>신나는 음악 + 효과음</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">두 영상을 나란히 틀어 보세요. 같은 재료라도 설정에 따라 느낌이 완전히 달라져요.</p>
+      </div>
+
+      <div class="step" id="s2-7">
+        <h3>두 영상 저장하고 패들렛에 올리기</h3>
+        <ol class="do">
+          <li>각 프로젝트에서 오른쪽 위 <span class="path">1080P</span> 확인 → 내보내기(↑) → 갤러리 저장</li>
+          <li>자료모음 패들렛 → 내 이름 칸의 <span class="path">+</span> → 영상 ①, 영상 ② 올리기</li>
+          <li>두 영상 중 어느 쪽이 더 마음에 드는지 한 줄 적기</li>
+        </ol>
+        <details><summary>저장이 안 돼요 (내보내기가 막혀요)</summary><div><p>보석(💎) 표시가 있는 유료 효과나 스티커가 들어간 거예요. 그 효과를 지우거나 무료 효과로 바꾸세요.</p></div></details>
+        <details><summary>영상을 다른 폰으로 옮기고 싶어요</summary><div><p>카카오톡으로 보내면 화질이 떨어져요. 구글 드라이브나 에어드롭, 퀵쉐어를 쓰세요.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3회차 -->
+  <section id="s3" role="tabpanel" aria-labelledby="t-s3" tabindex="-1" hidden>
+    <div class="band">
+      <div class="when">3회차 · 11월 5일 (목)</div>
+      <h2>기획하고 그림 만들기</h2>
+      <p class="sub">조회수 잘 나온 쇼츠의 뼈대 빌리기</p>
+    </div>
+    <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>기획안 + 장면 그림 5~6장 + 그림으로 이어 본 쇼츠 맛보기</p></div></div>
+
+    <h3 class="label">오늘 배울 내용</h3>
+    <ol class="toc">
+      <li><button type="button" data-go="s3-1">조회수 높은 쇼츠의 공통점</button></li>
+      <li><button type="button" data-go="s3-2">쇼츠 기획 PD(잼)와 기획하기</button></li>
+      <li><button type="button" data-go="s3-3">장면 그림 만들기</button></li>
+      <li><button type="button" data-go="s3-4">캡컷으로 그림 이어 보기</button></li>
+    </ol>
+
+    <div class="steps">
+      <div class="step" id="s3-1">
+        <h3>조회수 높은 쇼츠의 공통점</h3>
+        <p>쇼츠 분석 사이트에서 조회수가 높은 동물 쇼츠를 모아 뜯어봤어요.</p>
+        <div class="cases">
+          <div class="case"><span class="views">136만 회</span> · 강아지 승무원 「착한 항공」 (인스타)
+            <p>손님 시점으로 보여 주고, 손님이 불평하면 강아지가 뻔뻔하게 받아쳐요. 편마다 다른 강아지가 알바생으로 나오는 연재예요.</p></div>
+          <div class="case"><span class="views">10.2만 회</span> · 비숑 요리사 「비 오는 날 부침개」 (인스타)
+            <p>전부 AI로 만든 영상이에요. 완성된 부침개를 먼저 보여 주고, 재료 → 부치기 → 아기 강아지에게 대접하는 순서예요. 좋아요가 조회수의 11%나 돼요.</p></div>
+          <div class="case"><span class="views">692.8만 회</span> · 「친구집에 함부로 고양이를 맡기면 안 되는 이유」 (유튜브)
+            <p>구독자 2만 명 채널이 만든 영상이에요. 무서운 줄 알았는데 순둥이라는 반전, 동물 옆 노란 속마음 자막, AI 목소리 내레이션이 특징이에요.</p></div>
+        </div>
+        <ol class="formula">
+          <li><span><b>제목 띠</b> : 위쪽 띠에 큰 제목. 1초 만에 무슨 영상인지 알아요.</span></li>
+          <li><span><b>사람처럼</b> : 캐릭터에게 직업을 주고 속마음이나 대사를 붙여요.</span></li>
+          <li><span><b>갈등 → 반전</b> : 불평하는 손님과 뻔뻔한 사장님, 무서운 줄 알았는데 순둥이</span></li>
+          <li><span><b>한국 일상 소재</b> : 시장, 분식, 비 오는 날 부침개</span></li>
+          <li><span><b>짧은 자막</b> : 한 화면에 한 줄</span></li>
+          <li><span><b>같은 캐릭터로 연재</b> : 같은 옷, 같은 장소, 다음 편 예고</span></li>
+          <li><span><b>댓글 부르는 질문</b> : "여러분은 비 오는 날 뭐 드세요?"</span></li>
+        </ol>
+        <div class="tbl"><table>
+          <thead><tr><th>우리가 만들 틀</th><th>예시</th></tr></thead>
+          <tbody>
+            <tr><td><b>A. 가게 사장님</b></td><td>내 캐릭터나 뜨개 곰이 오산 오색시장에서 붕어빵 가게를 해요. 손님과 짧은 대사를 주고받아요.</td></tr>
+            <tr><td><b>B. 요리사</b></td><td>뜨개 토끼가 비 오는 날 부추전을 부쳐요. 완성 → 재료 → 과정 → 대접 → 웃는 얼굴</td></tr>
+            <tr><td><b>C. 반전 사연</b></td><td>"함부로 할머니 집에 강아지를 맡기면 생기는 일"</td></tr>
+            <tr><td><b>D. 내 캐릭터의 꿀팁</b></td><td>1회차 캐릭터가 텃밭·살림·건강 습관 꿀팁을 알려 줘요.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="step" id="s3-2">
+        <h3>쇼츠 기획 PD(잼)와 기획하기</h3>
+        <p><a class="btn solid" href="https://gemini.google.com/gem/2f64ff578193" target="_blank" rel="noopener noreferrer">쇼츠 기획 PD 열기</a></p>
+        <ol class="do">
+          <li>잼이 인사하면 1회차에 만든 <b>대표 포즈 그림을 올려요</b></li>
+          <li>질문마다 <b>번호만</b> 적어요. 분야, 누구에게, 참고 쇼츠, 주제, 만드는 방식, 그림 스타일을 차례로 물어봐요 (동물 쇼츠를 고르면 A·B·C 틀도 물어봐요)</li>
+          <li>참고 쇼츠 차례에는 유튜브에서 찾은 쇼츠 화면을 캡처해 올리거나, 없으면 "없어요"라고 적어요</li>
+          <li>만드는 방식은 <b>1 AI 그림</b> 또는 <b>2 AI 그림 → Flow 영상</b>을 골라요</li>
+          <li>기획안이 나오면 제목, 첫마디, 장면표를 읽어 보고, 마음에 안 드는 곳은 "첫마디 다른 걸로"처럼 말해요</li>
+        </ol>
+        <div class="tip"><b>처음부터 끝까지 한 대화창에서</b>대화창을 새로 열면 캐릭터와 기획을 잊어버려요. 3·4·5회차 모두 같은 대화창을 이어서 쓰세요.</div>
+      </div>
+
+      <div class="step" id="s3-3">
+        <h3>장면 그림 만들기</h3>
+        <ol class="do">
+          <li>기획안 끝의 번호 중 <span class="path">1 장면 그림 그리기</span>를 보내요</li>
+          <li>잼이 상자 두 개를 줘요. <b>🖼️ 그림 요청</b> 상자를 복사해서 같은 대화창에 보내면 그림이 나와요</li>
+          <li><b>🎬 영상 만들기</b> 상자는 4회차 Flow에서 써요. 지금은 그대로 두세요</li>
+          <li>그림을 저장하고 "다음"을 보내면 다음 장면 상자가 나와요</li>
+          <li>고칠 게 있으면 "표정만 더 밝게"처럼 <b>한 가지만</b> 말해요</li>
+        </ol>
+        <details><summary>그림 대신 글만 나와요</summary><div><p>그림 요청 상자의 글이 "이미지로 생성해서 그려 주세요:"로 시작하는지 확인하고 다시 보내 보세요. 무료 계정은 하루 그림 수가 정해져 있어요.</p></div></details>
+      </div>
+
+      <div class="step" id="s3-4">
+        <h3>캡컷으로 그림 이어 보기</h3>
+        <ol class="do">
+          <li><span class="path">새 동영상</span> → 장면 그림을 1번부터 순서대로 선택 → <span class="path">추가</span> → <span class="path">비율 9:16</span></li>
+          <li>그림 하나당 3~5초로 맞추기</li>
+          <li>그림마다 <span class="path">애니메이션 → 콤보</span>에서 살짝 커지는 효과</li>
+          <li><b>제목 띠 만들기</b> : 그림을 두 손가락으로 조금 줄여 가운데 → <span class="path">캔버스 → 색상 → 검정</span> → <span class="path">텍스트 추가</span>로 위쪽에 큰 제목 → 제목 클립을 영상 끝까지 늘리기</li>
+          <li>장면표의 대사 자막은 아래쪽에 흰 글씨로, 속마음은 <mark>노란 글씨</mark>로 캐릭터 머리 옆에</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="hw">
+      <h3>다음 시간까지</h3>
+      <label class="check"><input type="checkbox" id="hw3a"><span>장면 그림이 모두 갤러리에 있는지 확인하기</span></label>
+      <label class="check"><input type="checkbox" id="hw3b"><span>폰 크롬에서 <a href="https://labs.google/fx/ko/tools/flow" target="_blank" rel="noopener noreferrer">Google Flow</a>를 열고 구글 로그인만 해 두기</span></label>
+    </div>
+  </section>
+
+  <!-- 4회차 -->
+  <section id="s4" role="tabpanel" aria-labelledby="t-s4" tabindex="-1" hidden>
+    <div class="band">
+      <div class="when">4회차 · 11월 12일 (목)</div>
+      <h2>쇼츠 완성하기</h2>
+      <p class="sub">AI 그림을 움직이는 영상으로</p>
+    </div>
+    <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>제목 띠, 자막, 소리까지 들어간 완성 쇼츠 한 편</p></div></div>
+
+    <h3 class="label">오늘 배울 내용</h3>
+    <ol class="toc">
+      <li><button type="button" data-go="s4-1">Flow로 장면 그림 움직이기</button></li>
+      <li><button type="button" data-go="s4-2">캡컷에 모으고 제목 띠 달기</button></li>
+      <li><button type="button" data-go="s4-3">대사 자막과 속마음 자막</button></li>
+      <li><button type="button" data-go="s4-4">AI 목소리 넣기 (하고 싶은 분만)</button></li>
+      <li><button type="button" data-go="s4-5">소리 마무리하고 저장하기</button></li>
+    </ol>
+
+    <div class="steps">
+      <div class="step" id="s4-1">
+        <h3>Flow로 장면 그림 움직이기</h3>
+        <p><a class="btn solid" href="https://labs.google/fx/ko/tools/flow" target="_blank" rel="noopener noreferrer">Google Flow 열기</a></p>
+        <ol class="do">
+          <li>폰 크롬에서 Flow 열기 → 구글 로그인 → 새 프로젝트</li>
+          <li>영상 만들기에서 <b>이미지로 시작하는 방식</b>을 고르고 장면 그림 올리기</li>
+          <li>잼이 준 <b>🎬 영상 만들기</b> 상자를 복사해 붙여 넣기</li>
+          <li>세로 9:16, 만들 개수 1개 확인 → 만들기</li>
+          <li>마음에 들면 다운로드 → 갤러리 저장</li>
+        </ol>
+        <div class="tip"><b>크레딧 아끼기</b>무료 계정은 하루에 짧은 영상 몇 개 분량만 만들 수 있어요. 가장 중요한 장면 2~3개만 영상으로 만들고, 나머지는 캡컷에서 그림을 살짝 확대하면 충분해요.</div>
+        <details><summary>캐릭터 얼굴이 바뀌거나 움직임이 어지러워요</summary><div>
+          <p>동작은 하나만, 카메라 움직임도 하나만 적어야 잘 나와요. 잼에게 "3번 장면 영상 프롬프트를 더 단순하게"라고 부탁하세요. 화면 이름은 Flow 업데이트에 따라 조금 다를 수 있어요.</p>
+        </div></details>
+      </div>
+
+      <div class="step" id="s4-2">
+        <h3>캡컷에 모으고 제목 띠 달기</h3>
+        <ol class="do">
+          <li><span class="path">새 동영상</span> → Flow 영상과 장면 그림을 장면표 순서대로 → <span class="path">추가</span> → <span class="path">비율 9:16</span></li>
+          <li>Flow 영상 앞뒤의 어색한 부분 자르기 (AI 영상은 처음과 끝이 흔들리는 일이 많아요)</li>
+          <li>제목 띠 : 영상을 조금 줄여 가운데 → <span class="path">캔버스 → 색상 → 검정</span> → 위쪽에 큰 제목</li>
+        </ol>
+      </div>
+
+      <div class="step" id="s4-3">
+        <h3>대사 자막과 속마음 자막</h3>
+        <ol class="do">
+          <li>대사 : 아래쪽에 흰 글씨 한 줄 (2회차에 저장한 자막 모양 쓰기)</li>
+          <li>속마음 : <mark>노란 글씨</mark>로 작게, 캐릭터 머리 옆</li>
+          <li>자막이 뿅 나올 때 <span class="path">애니메이션 → 인</span>에서 짧은 효과 하나</li>
+        </ol>
+      </div>
+
+      <div class="step" id="s4-4">
+        <h3>AI 목소리 넣기 (하고 싶은 분만)</h3>
+        <ol class="do">
+          <li>목소리로 읽어 줄 자막을 누르기 → <span class="path">텍스트 음성 변환</span></li>
+          <li>목소리를 골라 들어 보고 → 적용</li>
+          <li>자막 없이 소리만 남기고 싶으면 그 자막은 지우기</li>
+        </ol>
+        <p class="note">목소리 없이 자막과 음악만으로도 충분해요. 캡컷 AI 목소리 중 일부는 유료(💎)예요.</p>
+      </div>
+
+      <div class="step" id="s4-5">
+        <h3>소리 마무리하고 저장하기</h3>
+        <ol class="do">
+          <li>Flow 영상 소리가 어색하면 그 클립만 음소거</li>
+          <li><span class="path">오디오 → 사운드</span>로 배경음악, 효과음은 두 곳만</li>
+          <li>휴대폰 스피커로 처음부터 끝까지 한 번 들어 보기</li>
+          <li>1080P로 내보내기 → 패들렛 내 이름 칸에 올리기</li>
+        </ol>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 5회차 -->
+  <section id="s5" role="tabpanel" aria-labelledby="t-s5" tabindex="-1" hidden>
+    <div class="band">
+      <div class="when">5회차 · 11월 19일 (목)</div>
+      <h2>쇼츠 만들고 유튜브에 올리기</h2>
+      <p class="sub">쇼츠 상영회</p>
+    </div>
+    <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>쇼츠 한 편 더 + 내 유튜브 채널에 쇼츠 게시</p></div></div>
+
+    <h3 class="label">오늘 배울 내용</h3>
+    <ol class="toc">
+      <li><button type="button" data-go="s5-1">다음 편 기획하기</button></li>
+      <li><button type="button" data-go="s5-2">장면 그림 만들기</button></li>
+      <li><button type="button" data-go="s5-3">캡컷으로 완성하기</button></li>
+      <li><button type="button" data-go="s5-4">올리기 전 확인</button></li>
+      <li><button type="button" data-go="s5-5">유튜브 채널 만들기</button></li>
+      <li><button type="button" data-go="s5-6">쇼츠 올리기</button></li>
+      <li><button type="button" data-go="s5-7">제목·설명·해시태그 만들기</button></li>
+      <li><button type="button" data-go="s5-8">상영회</button></li>
+      <li><button type="button" data-go="s5-9">앞으로 꾸준히 올리기</button></li>
+    </ol>
+
+    <div class="steps">
+      <div class="step" id="s5-1">
+        <h3>다음 편 기획하기</h3>
+        <p>같은 캐릭터로 두 번째 쇼츠를 만들어요. 쇼츠 기획 PD 대화창에서 <span class="path">5 다음 편(연재) 기획</span>을 보내요.</p>
+        <p>잼이 열리지 않으면 제미나이 새 대화에 내 캐릭터 그림을 올리고 아래 글을 붙여 넣어요.</p>
+        <div class="prompt"><header><span>복사해서 쓰기 · 다음 편 기획</span><button class="copy" type="button">복사</button></header><pre>올린 그림의 캐릭터가 주인공인 30초 유튜브 쇼츠를 기획해 주세요.
+주제 : <i>비 오는 날 텃밭 돌보기</i>
+보는 사람 : <i>나와 비슷한 50~60대</i>
+첫 장면은 결과나 가장 궁금한 장면으로 시작하고, 마지막은 댓글을 부르는 질문으로 끝내 주세요.
+장면 5개를 표로 : 장면 / 화면 / 자막(12자 안팎)
+그리고 장면마다 "이미지로 생성해서 그려 주세요:"로 시작하는 그림 요청 문장을 코드 상자로 따로 주세요. 얼굴과 옷은 올린 그림과 똑같이, 세로 9:16, 그림 안에 글자 없이.</pre></div>
+      </div>
+
+      <div class="step" id="s5-2">
+        <h3>장면 그림 만들기</h3>
+        <ol class="do">
+          <li>그림 요청 상자를 복사해서 같은 대화창에 보내기</li>
+          <li>그림이 나오면 저장하고 다음 장면으로</li>
+          <li>시간이 되면 중요한 장면 한두 개는 <a href="https://labs.google/fx/ko/tools/flow" target="_blank" rel="noopener noreferrer">Google Flow</a>로 움직이게 만들기 (4회차 방법)</li>
+        </ol>
+      </div>
+
+      <div class="step" id="s5-3">
+        <h3>캡컷으로 완성하기</h3>
+        <ol class="do">
+          <li><span class="path">새 동영상</span> → 그림·영상을 순서대로 → <span class="path">추가</span> → <span class="path">비율 9:16</span></li>
+          <li>그림은 3~4초, 그림마다 <span class="path">애니메이션 → 콤보</span></li>
+          <li>제목 띠 : 영상을 조금 줄이기 → <span class="path">캔버스 → 색상 → 검정</span> → 위쪽에 큰 제목</li>
+          <li>자막은 아래쪽 흰 글씨, 속마음은 <mark>노란 글씨</mark></li>
+          <li>배경음악과 효과음 두 곳 → 1080P로 내보내기</li>
+        </ol>
+      </div>
+
+      <div class="step" id="s5-4">
+        <h3>올리기 전 확인</h3>
+        <label class="check"><input type="checkbox" id="c5a"><span>첫 3초에 가장 궁금한 장면이 나오나요?</span></label>
+        <label class="check"><input type="checkbox" id="c5b"><span>자막이 한 화면에 한 줄이고, 아래 끝에 너무 붙지 않았나요?</span></label>
+        <label class="check"><input type="checkbox" id="c5c"><span>집 주소, 전화번호, 다른 사람 얼굴이 나오지 않나요?</span></label>
+        <label class="check"><input type="checkbox" id="c5d"><span>음악은 캡컷이나 유튜브의 무료 곡인가요?</span></label>
+        <label class="check"><input type="checkbox" id="c5e"><span>휴대폰 스피커로 처음부터 끝까지 들어 봤나요?</span></label>
+      </div>
+
+      <div class="step" id="s5-5">
+        <h3>유튜브 채널 만들기</h3>
+        <ol class="do">
+          <li>유튜브 앱 → 오른쪽 아래 <span class="path">내 페이지</span> → <span class="path">채널 만들기</span></li>
+          <li>채널 이름 : 캐릭터 이름을 넣으면 기억하기 쉬워요 (예 : <mark>텃밭지기의 꿀팁</mark>)</li>
+          <li>프로필 사진 : 1회차에 만든 대표 포즈 그림</li>
+        </ol>
+      </div>
+
+      <div class="step" id="s5-6">
+        <h3>쇼츠 올리기</h3>
+        <ol class="do">
+          <li>아래 가운데 <span class="path">+</span> → <span class="path">동영상 업로드</span> → 완성 영상 고르기. 세로로 된 짧은 영상은 쇼츠로 올라가요</li>
+          <li>제목 쓰기 (다음 단계에서 잼이 만들어 줘요)</li>
+          <li>공개 범위 : 처음에는 <span class="path">일부 공개</span>로 올려서 확인하기</li>
+          <li>시청자층 : 어린이를 위해 만든 영상이면 <b>아동용</b>, 아니면 <b>아동용 아님</b></li>
+          <li>업로드 → 내 채널에서 재생해 보고, 괜찮으면 <span class="path">공개</span>로 바꾸기</li>
+          <li>4회차에 만든 쇼츠도 같은 방법으로 올리기</li>
+        </ol>
+        <div class="tip"><b>AI로 만든 영상이라면</b>설명에 "AI로 만든 장면이 들어 있어요"라고 적어 주세요. 실제 사람이나 장소처럼 보이는 AI 영상이면 업로드 화면의 변경·합성 콘텐츠 표시도 켜요.</div>
+      </div>
+
+      <div class="step" id="s5-7">
+        <h3>제목·설명·해시태그 만들기</h3>
+        <p>쇼츠 기획 PD 대화창에서 <span class="path">6 유튜브 제목·설명·해시태그</span>를 보내요. 잼이 열리지 않으면 제미나이 새 대화에 아래 글을 붙여 넣어도 돼요.</p>
+        <div class="prompt"><header><span>복사해서 쓰기</span><button class="copy" type="button">복사</button></header><pre>이 쇼츠의 유튜브 제목 5개, 설명 2줄, 해시태그 5개를 만들어 주세요.
+보는 사람 : <i>나와 비슷한 50~60대</i>
+해시태그에는 #shorts 를 꼭 넣고, 설명 끝에는 댓글을 부르는 질문을 하나 붙여 주세요.
+내용 : <i>기획안이나 장면표를 여기에 붙여 넣기</i></pre></div>
+      </div>
+
+      <div class="step" id="s5-8">
+        <h3>상영회</h3>
+        <ol class="do">
+          <li>내 쇼츠 링크 복사 : 쇼츠 화면의 <span class="path">공유 → 링크 복사</span></li>
+          <li>자료모음 패들렛 내 이름 칸에 링크를 올리고, 한 편씩 함께 보기</li>
+          <li>다른 분 작품에 칭찬 한마디씩 댓글 달기</li>
+        </ol>
+      </div>
+
+      <div class="step" id="s5-9">
+        <h3>앞으로 꾸준히 올리기</h3>
+        <ul class="do">
+          <li><b>일주일에 한 편, 같은 요일</b>에 올려요. 잘 만든 영상보다 꾸준히 올리는 영상이 이겨요.</li>
+          <li>같은 캐릭터로 <b>다음 편</b>을 계속 이어 가요. 오늘 쓴 기획 글에서 주제만 바꾸면 돼요.</li>
+          <li>댓글에는 꼭 답글을 달아요. 다음 편 주제가 댓글에서 나와요.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hw">
+      <h3>수료 체크</h3>
+      <label class="check"><input type="checkbox" id="hw5a"><span>내 유튜브 채널을 만들었어요</span></label>
+      <label class="check"><input type="checkbox" id="hw5b"><span>쇼츠를 공개로 올렸어요</span></label>
+      <label class="check"><input type="checkbox" id="hw5c"><span>패들렛에 내 쇼츠 링크를 올리고 칭찬 댓글을 달았어요</span></label>
+      <label class="check"><input type="checkbox" id="hw5d"><span>다음 편 주제를 하나 정했어요</span></label>
+    </div>
+  </section>
+
+  <!-- 캡컷 사전 -->
+  <section id="dict" role="tabpanel" aria-labelledby="t-dict" tabindex="-1" hidden>
+    <div class="band">
+      <div class="when">모든 회차에서 찾아보기</div>
+      <h2>캡컷 사전</h2>
+      <p class="sub">휴대폰 캡컷 메뉴 이름 그대로</p>
+    </div>
+
+    <h3 class="label">자주 쓰는 길</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>하고 싶은 것</th><th>누르는 순서</th></tr></thead>
+      <tbody>
+        <tr><td>새로 시작</td><td>새 동영상 → 그림·영상 선택 → 추가</td></tr>
+        <tr><td>세로 화면</td><td>비율 → 9:16</td></tr>
+        <tr><td>자르기</td><td>클립 누르기 → 흰 손잡이 끌기 / 분할 / 삭제</td></tr>
+        <tr><td>그림·영상 바꾸기</td><td>클립 누르기 → 교체 (자막은 그대로)</td></tr>
+        <tr><td>빠르게·느리게</td><td>클립 누르기 → 속도</td></tr>
+        <tr><td>원래 소리 끄기</td><td>클립 오디오 음소거 또는 볼륨 0</td></tr>
+        <tr><td>자막</td><td>텍스트 → 텍스트 추가</td></tr>
+        <tr><td>자막 모양 저장</td><td>텍스트 → 오른쪽 끝 → 사전 설정 → + 사전 설정으로 저장</td></tr>
+        <tr><td>자막 움직이기</td><td>자막 누르기 → 애니메이션 → 인 / 아웃 / 반복</td></tr>
+        <tr><td>그림 살짝 확대</td><td>클립 누르기 → 애니메이션 → 콤보</td></tr>
+        <tr><td>배경음악</td><td>오디오 → 사운드 → 검색 → +</td></tr>
+        <tr><td>효과음</td><td>오디오 → 사운드 효과 → 검색</td></tr>
+        <tr><td>받은 음악 넣기</td><td>오디오 → 기기에서 가져오기</td></tr>
+        <tr><td>AI 목소리</td><td>자막 누르기 → 텍스트 음성 변환</td></tr>
+        <tr><td>검은 제목 띠</td><td>영상 조금 줄이기 → 캔버스 → 색상 → 검정 → 텍스트 추가</td></tr>
+        <tr><td>캐릭터 올리기</td><td>오버레이 → 오버레이 추가 → 캐릭터 그림</td></tr>
+        <tr><td>저장</td><td>오른쪽 위 1080P 확인 → 내보내기(↑)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="label">자막 모양 4가지</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>모양</th><th>만드는 법 (텍스트 → 스타일)</th><th>어울리는 영상</th></tr></thead>
+      <tbody>
+        <tr><td>기본 자막</td><td>굵은 고딕 → 획 두께 11~13 → 글자 사이 좁히기</td><td>정보, 안내</td></tr>
+        <tr><td>배경 자막</td><td>배경 켜기 → 모서리 0 → 손글씨체</td><td>일상 이야기</td></tr>
+        <tr><td>글로우 자막</td><td>획 끄고 글로우만 → 명조체</td><td>감성, 마무리</td></tr>
+        <tr><td>포인트 큰 자막</td><td>두꺼운 글씨 → 검정 획 + 검정 글로우</td><td>웃긴 장면, 반응</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="label">자막을 넣으면 안 되는 자리</h3>
+    <p>쇼츠에 올리면 화면 <b>아래쪽</b>은 제목과 설명이, <b>오른쪽</b>은 좋아요·댓글 버튼이 덮어요. 자막은 화면 가운데에서 살짝 아래까지만 두세요. 핵심 문장을 마지막 1초에 두지 마세요.</p>
+
+    <h3 class="label">초보 티 나는 습관</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>이러면</th><th>이렇게</th></tr></thead>
+      <tbody>
+        <tr><td>장면마다 전환 효과</td><td>장소·시간이 바뀔 때만</td></tr>
+        <tr><td>화면 가득 긴 자막</td><td>한 화면에 한 문장</td></tr>
+        <tr><td>글꼴·색을 자꾸 바꿈</td><td>글꼴 1~2개 + 강조색 1개</td></tr>
+        <tr><td>배경음악이 너무 큼</td><td>휴대폰 스피커로 다시 들어 보기</td></tr>
+        <tr><td>첫 3초를 설명으로 채움</td><td>결과나 가장 궁금한 장면을 맨 앞으로</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <footer>오산시 평생학습관 · 중장년 AI쇼츠 크리에이터 과정 · 강사 임혜연</footer>
+</div>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  var ids = tabs.map(function(t){ return t.getAttribute('aria-controls'); });
+  function store(k, v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k, v); }catch(e){ return null; } }
+  function show(id, focus){
+    if(ids.indexOf(id) < 0) id = 'guide';
+    tabs.forEach(function(t){
+      var on = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    store('osan-tab', id);
+    var names = {guide:'과정 안내', s1:'1회차 · 10월 22일', s2:'2회차 · 10월 29일', s3:'3회차 · 11월 5일', s4:'4회차 · 11월 12일', s5:'5회차 · 11월 19일', dict:'캡컷 사전'};
+    var n = /^s(\d)$/.test(id) ? +id.slice(1) : 0;
+    var nt = document.getElementById('nowText');
+    if(nt) nt.innerHTML = (n ? '지금 ' : '') + '<b>' + names[id] + '</b>';
+    document.querySelectorAll('.bar i').forEach(function(el, k){ el.className = (k < n ? 'on' : '') + (k === n-1 ? ' cur' : ''); });
+    if(focus){ var p = document.getElementById(id); var wrap = document.querySelector('.tabs-wrap'); var y = p.getBoundingClientRect().top + window.pageYOffset - wrap.offsetHeight - 6; window.scrollTo({top: Math.max(0, y), behavior: 'auto'}); p.focus({preventScroll:true}); }
+  }
+  function openTab(id){
+    if(history.replaceState){ try{ history.replaceState(null, '', '#' + id); }catch(e){} }
+    show(id, true);
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ openTab(t.getAttribute('aria-controls')); });
+    t.addEventListener('keydown', function(e){
+      var n = null;
+      if(e.key === 'ArrowRight') n = tabs[(i+1) % tabs.length];
+      if(e.key === 'ArrowLeft') n = tabs[(i-1+tabs.length) % tabs.length];
+      if(n){ e.preventDefault(); n.focus(); n.click(); }
+    });
+  });
+  document.querySelectorAll('[data-tab]').forEach(function(b){
+    b.addEventListener('click', function(){ openTab(b.getAttribute('data-tab')); });
+  });
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var el = document.getElementById(b.getAttribute('data-go'));
+      if(el) el.scrollIntoView({block:'start'});
+    });
+  });
+  var start = (location.hash || '').slice(1) || store('osan-tab') || 'guide';
+  show(start, false);
+  window.addEventListener('hashchange', function(){ show(location.hash.slice(1), true); });
+
+  document.querySelectorAll('a[target="_blank"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var w = null;
+      try{ w = window.open(a.href, '_blank'); }catch(err){}
+      if(w){ try{ w.opener = null; }catch(err){} e.preventDefault(); }
+    });
+  });
+
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click', function(){
+      var pre = b.closest('.prompt').querySelector('pre');
+      var text = pre.innerText;
+      function done(){ b.textContent = '복사됨'; b.classList.add('done'); setTimeout(function(){ b.textContent = '복사'; b.classList.remove('done'); }, 1800); }
+      function fallback(){ var r = document.createRange(); r.selectNodeContents(pre); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = '길게 눌러 복사'; }
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, fallback); } else { fallback(); }
+    });
+  });
+
+  document.querySelectorAll('.check input').forEach(function(c){
+    if(store('osan-' + c.id) === '1') c.checked = true;
+    c.addEventListener('change', function(){ store('osan-' + c.id, c.checked ? '1' : '0'); });
+  });
+})();
+</script>
+</body>
+</html>
