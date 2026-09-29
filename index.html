@@ -136,6 +136,13 @@ button.btn{cursor:pointer;width:100%}
 .result b{display:block;font-size:15px;color:var(--acc-text);letter-spacing:.02em}
 .result p{margin:2px 0 0;font-weight:700;font-size:19px}
 
+/* 이어지는 흐름 */
+.flow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.flow>div{background:var(--surface);border:1px dashed var(--acc-text);border-radius:14px;padding:10px 14px}
+.flow b{display:block;font-size:14px;color:var(--acc-text)}
+.flow p{margin:2px 0 0;font-size:16px;line-height:1.6}
+@media (max-width:480px){.flow{grid-template-columns:1fr}}
+
 /* 목차 */
 h3.label{font-size:15px;letter-spacing:.04em;color:var(--acc-text);margin:28px 0 8px;font-weight:800}
 .toc{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:16px;counter-reset:toc}
@@ -252,8 +259,8 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
 
     <h3 class="label">5회 순서</h3>
     <ol class="road">
-      <li><div class="no">1<small>10/22</small></div><div><b>내 캐릭터 만들기 · 캡컷 맛보기</b><p>챗GPT와 제미나이로 내 캐릭터 만들기, 패들렛에 올리기, 캡컷 설치</p></div></li>
-      <li><div class="no">2<small>10/29</small></div><div><b>캡컷 실습</b><p>기본 메뉴 익히기, 영상 2개와 사진 5장으로 느낌이 다른 영상 2편</p></div></li>
+      <li><div class="no">1<small>10/22</small></div><div><b>만나서 반가워요 · 내 캐릭터</b><p>챗GPT·제미나이로 나를 닮은 캐릭터 만들고 자기소개, 캡컷 설치</p></div></li>
+      <li><div class="no">2<small>10/29</small></div><div><b>캡컷 기본기</b><p>기본 메뉴, 자르기, 내 자막 모양 저장, 느낌이 다른 영상 2편</p></div></li>
       <li><div class="no">3<small>11/5</small></div><div><b>기획하고 그림 만들기</b><p>쇼츠 기획 PD(잼)로 기획하고 장면 그림 만들기</p></div></li>
       <li><div class="no">4<small>11/12</small></div><div><b>쇼츠 완성하기</b><p>Flow로 그림을 움직이는 영상으로 바꾸고 캡컷으로 완성</p></div></li>
       <li><div class="no">5<small>11/19</small></div><div><b>쇼츠 만들고 유튜브에 올리기</b><p>같은 캐릭터로 한 편 더, 채널 만들고 올리기, 상영회</p></div></li>
@@ -286,33 +293,37 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
   <section id="s1" role="tabpanel" aria-labelledby="t-s1" tabindex="-1" hidden>
     <div class="band">
       <div class="when">1회차 · 10월 22일 (목)</div>
-      <h2>내 캐릭터 만들기</h2>
-      <p class="sub">그리고 캡컷 맛보기</p>
+      <h2>만나서 반가워요</h2>
+      <p class="sub">나를 닮은 캐릭터로 자기소개</p>
     </div>
-    <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>나를 닮은 3D 캐릭터와 표정·포즈 9개, 패들렛 내 이름 칸에 올리기</p></div></div>
+    <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>나를 닮은 캐릭터 + 캐릭터로 하는 자기소개</p></div></div>
+    <div class="flow">
+      <div><b>오늘은</b><p>서로 인사하고, 5주 동안 쓸 내 캐릭터를 만들어요. 캡컷은 설치만 해 둬요.</p></div>
+      <div><b>다음 시간으로 →</b><p>캐릭터 그림은 2회차 영상 재료, 3회차 잼의 주인공, 5회차 채널 프로필이 돼요.</p></div>
+    </div>
 
     <h3 class="label">오늘 배울 내용</h3>
     <ol class="toc">
-      <li><button type="button" data-go="s1-1">5회 과정 한눈에 보기</button></li>
+      <li><button type="button" data-go="s1-1">과정 소개와 5주 흐름</button></li>
       <li><button type="button" data-go="s1-2">자료모음 패들렛 들어가기</button></li>
       <li><button type="button" data-go="s1-3">챗GPT로 기본 아바타 만들기</button></li>
       <li><button type="button" data-go="s1-4">제미나이로 옷·표정·포즈 9개 만들기</button></li>
-      <li><button type="button" data-go="s1-5">포즈 하나 골라 다듬기</button></li>
-      <li><button type="button" data-go="s1-6">패들렛 내 이름 칸에 올리기</button></li>
-      <li><button type="button" data-go="s1-7">캡컷 설치하고 맛보기</button></li>
+      <li><button type="button" data-go="s1-5">대표 포즈 하나 다듬기</button></li>
+      <li><button type="button" data-go="s1-6">패들렛에 올리고 자기소개</button></li>
+      <li><button type="button" data-go="s1-7">캡컷 설치해 두기</button></li>
     </ol>
 
     <div class="steps">
       <div class="step" id="s1-1">
-        <h3>5회 과정 한눈에 보기</h3>
-        <p>1회차에 만든 내 캐릭터가 5주 내내 쇼츠의 주인공이 돼요. 촬영 없이 AI로 만든 그림과 영상으로 쇼츠를 만들어요.</p>
+        <h3>과정 소개와 5주 흐름</h3>
+        <p>오늘 만드는 캐릭터가 5주 내내 쇼츠의 주인공이 돼요. 촬영 없이 AI로 만든 그림과 영상으로 쇼츠를 만들어요.</p>
         <p><button class="btn line" type="button" data-tab="guide">5회 순서와 준비물 보기</button></p>
       </div>
 
       <div class="step" id="s1-2">
         <h3>자료모음 패들렛 들어가기</h3>
         <p>수업 자료와 여러분이 만든 작품을 모두 여기에 모아요. 서로 구경하고 칭찬 댓글도 달아요.</p>
-        <p><a class="btn solid" href="https://padlet.com/eduleader/ai-s02406vvnhm8ctdo0n4z" target="_blank" rel="noopener noreferrer">자료모음 패들렛 열기</a></p>
+        <p><a class="btn solid" href="https://padlet.com/eduleader/ai-s02406vvnhm8ctdo0n4z" target="_blank" rel="noopener noreferrer">자료모음 패들렛 열기 <span class="ext">↗</span></a></p>
         <p class="note">주소를 직접 입력할 때 : padlet.com/eduleader/ai-s02406vvnhm8ctdo0n4z</p>
         <p>들어가면 <b>내 이름이 적힌 칸</b>을 찾아 두세요. 오늘 만든 캐릭터를 그 칸에 올려요.</p>
       </div>
@@ -365,65 +376,44 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
       </div>
 
       <div class="step" id="s1-5">
-        <h3>포즈 하나 골라 다듬기</h3>
+        <h3>대표 포즈 하나 다듬기</h3>
         <p>9개 중에서 채널 대표 모습이 될 포즈를 하나 골라요. 같은 대화창에 이어서 보내요.</p>
         <div class="prompt"><header><span>복사해서 쓰기 · 대표 포즈</span><button class="copy" type="button">복사</button></header><pre>9개 중 <i>5번</i> 포즈로 한 장만 크게 다시 그려 줘.
 얼굴과 옷은 지금과 똑같이 하고, 흰 배경, 전신, 세로 9:16, 그림 안에 글자 없이.</pre></div>
-        <p>더 다듬고 싶으면 <b>한 번에 한 가지씩</b> 말해요.</p>
-        <div class="tbl"><table>
-          <thead><tr><th>다듬을 것</th><th>이렇게 말해요</th></tr></thead>
-          <tbody>
-            <tr><td>포즈</td><td>"한 손을 흔들며 인사하는 포즈로"</td></tr>
-            <tr><td>표정</td><td>"더 활짝 웃는 얼굴로"</td></tr>
-            <tr><td>옷</td><td>"셔츠 위에 앞치마를 둘러 줘"</td></tr>
-            <tr><td>색</td><td>"셔츠 색을 하늘색으로"</td></tr>
-            <tr><td>디테일</td><td>"머리카락 끝을 더 매끈하게"</td></tr>
-          </tbody>
-        </table></div>
-        <p>마음에 들면 저장해요. 오늘 저장할 그림은 <b>기본 아바타, 포즈 9개, 대표 포즈</b> 이렇게 세 장이에요.</p>
+        <p>더 다듬고 싶으면 <b>한 번에 한 가지씩</b> 말해요. 예 : "더 활짝 웃는 얼굴로", "셔츠 색을 하늘색으로", "머리카락 끝을 더 매끈하게"</p>
+        <p>오늘 저장할 그림은 <b>기본 아바타, 포즈 9개, 대표 포즈</b> 세 장이에요.</p>
       </div>
 
       <div class="step" id="s1-6">
-        <h3>패들렛 내 이름 칸에 올리기</h3>
+        <h3>패들렛에 올리고 자기소개</h3>
         <ol class="do">
-          <li>자료모음 패들렛 열기 → <b>내 이름이 적힌 칸</b> 찾기</li>
-          <li>그 칸 아래의 <span class="path">+</span> 누르기 → 대표 포즈 그림 올리기</li>
+          <li>자료모음 패들렛 → <b>내 이름이 적힌 칸</b>의 <span class="path">+</span> → 대표 포즈 그림 올리기</li>
           <li>제목에 캐릭터 이름, 본문에 아래 세 줄 소개 → <span class="path">게시</span></li>
         </ol>
         <div class="prompt"><header><span>패들렛에 쓸 세 줄 소개</span><button class="copy" type="button">복사</button></header><pre>저는 <i>오산에 사는 60대, 텃밭 가꾸기가 취미인 김○○</i>입니다.
 제 캐릭터는 <i>다정하고 유쾌한 텃밭지기</i>예요.
 <i>텃밭 꿀팁을 또래 친구들에게 알려 주는</i> 쇼츠를 만들고 싶어요.</pre></div>
+        <p><b>한 사람씩 1분 자기소개</b> : 화면에 내 캐릭터를 띄우고 세 줄 소개를 읽어요. 듣는 분들은 그 사람 게시물에 <b>댓글 한 줄</b>을 남겨요.</p>
+        <div class="tip"><b>댓글 한 줄 예시</b>"저도 텃밭 해요, 반가워요!", "캐릭터가 꼭 닮았어요", "요리 쇼츠 기대할게요"</div>
         <p class="note">다른 칸에 잘못 올렸다면 게시물의 <span class="path">⋯</span> 메뉴에서 옮기거나 지우고 다시 올리면 돼요.</p>
       </div>
 
       <div class="step" id="s1-7">
-        <h3>캡컷 설치하고 맛보기</h3>
+        <h3>캡컷 설치해 두기</h3>
         <ol class="do">
-          <li>플레이스토어(아이폰은 앱스토어)에서 <span class="path">CapCut</span> 설치 → 구글 계정으로 로그인</li>
-          <li><span class="path">새 동영상</span> → 대표 포즈 그림 선택 → <span class="path">추가</span></li>
-          <li>아래 메뉴 <span class="path">비율 → 9:16</span> (쇼츠는 세로!)</li>
-          <li><span class="path">텍스트 → 텍스트 추가</span> → "<mark>안녕하세요, 텃밭지기예요</mark>" → 두 손가락으로 크게</li>
-          <li>그림 클립 누르기 → <span class="path">애니메이션 → 콤보</span>에서 천천히 커지는 효과 하나</li>
-          <li>오른쪽 위 <span class="path">1080P</span> 확인 → 내보내기 버튼(↑) → 갤러리에 저장</li>
+          <li>플레이스토어(아이폰은 앱스토어)에서 <span class="path">CapCut</span> 설치</li>
+          <li>구글 계정으로 로그인</li>
+          <li><span class="path">새 동영상</span>을 눌러 사진 목록이 뜨는지만 확인하고 닫기</li>
         </ol>
-        <div class="tbl"><table>
-          <thead><tr><th>처음 듣는 말</th><th>뜻</th></tr></thead>
-          <tbody>
-            <tr><td>미리보기</td><td>위쪽, 완성될 영상이 보이는 화면</td></tr>
-            <tr><td>타임라인</td><td>가운데 흰 세로선이 있는 작업 줄</td></tr>
-            <tr><td>클립</td><td>타임라인 위의 사진·영상 한 조각</td></tr>
-            <tr><td>분할</td><td>흰 세로선 자리에서 클립을 둘로 자르기</td></tr>
-            <tr><td>내보내기</td><td>다 만든 것을 영상 파일로 저장하기</td></tr>
-          </tbody>
-        </table></div>
-        <div class="tip"><b>캡컷은 무료로 충분해요</b>보석(💎)이나 Pro 표시가 붙은 것만 유료예요. 이 표시만 피하면 돼요.</div>
+        <p class="note">캡컷 사용법은 2회차에 처음부터 차근차근 배워요.</p>
       </div>
     </div>
 
     <div class="hw">
       <h3>다음 시간까지</h3>
       <label class="check"><input type="checkbox" id="hw1a"><span>기본 아바타, 포즈 9개, 대표 포즈 그림이 갤러리에 있는지 확인하기</span></label>
-      <label class="check"><input type="checkbox" id="hw1b"><span>패들렛 내 이름 칸에 캐릭터가 올라갔는지 확인하기</span></label>
+      <label class="check"><input type="checkbox" id="hw1b"><span>캡컷에 로그인되어 있는지 확인하기</span></label>
+      <label class="check"><input type="checkbox" id="hw1c"><span>(있으면) 폰 앨범에서 2회차에 쓰고 싶은 영상 2개와 사진 5장 골라 두기. 없으면 패들렛 실습 자료를 써요</span></label>
     </div>
   </section>
 
@@ -431,17 +421,22 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
   <section id="s2" role="tabpanel" aria-labelledby="t-s2" tabindex="-1" hidden>
     <div class="band">
       <div class="when">2회차 · 10월 29일 (목)</div>
-      <h2>캡컷 실습</h2>
+      <h2>캡컷 기본기</h2>
       <p class="sub">같은 재료, 다른 느낌 영상 2편</p>
     </div>
     <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>영상 2개와 사진 5장으로 만든, 분위기가 다른 쇼츠 2편</p></div></div>
+    <div class="flow">
+      <div><b>← 지난 시간에서</b><p>1회차 캐릭터 그림을 사진 재료로 써요.</p></div>
+      <div><b>다음 시간으로 →</b><p>오늘 익힌 자르기, 저장한 자막 모양, 효과음은 3~5회차 편집에 그대로 써요.</p></div>
+    </div>
 
     <h3 class="label">오늘 배울 내용</h3>
     <ol class="toc">
       <li><button type="button" data-go="s2-1">실습 재료 준비하기</button></li>
-      <li><button type="button" data-go="s2-2">캡컷 기본 메뉴 알아보기</button></li>
+      <li><button type="button" data-go="s2-2">캡컷 첫 화면과 기본 메뉴</button></li>
       <li><button type="button" data-go="s2-3">새 프로젝트 만들고 재료 불러오기</button></li>
       <li><button type="button" data-go="s2-4">기본 편집 : 자르기 · 순서 · 소리</button></li>
+      <li><button type="button" data-go="s2-8">자막 넣고 내 자막 모양 저장하기</button></li>
       <li><button type="button" data-go="s2-5">영상 ① 차분한 느낌으로 만들기</button></li>
       <li><button type="button" data-go="s2-6">영상 ② 경쾌한 느낌으로 만들기</button></li>
       <li><button type="button" data-go="s2-7">두 영상 저장하고 패들렛에 올리기</button></li>
@@ -461,7 +456,7 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
       </div>
 
       <div class="step" id="s2-2">
-        <h3>캡컷 기본 메뉴 알아보기</h3>
+        <h3>캡컷 첫 화면과 기본 메뉴</h3>
         <p>편집 화면은 세 부분이에요. 위는 <b>미리보기</b>, 가운데는 <b>타임라인</b>(흰 세로선이 지금 보고 있는 자리), 맨 아래는 <b>메뉴</b>예요. 메뉴는 옆으로 밀면 더 나와요.</p>
         <div class="tbl"><table>
           <thead><tr><th>아래 메뉴</th><th>하는 일</th></tr></thead>
@@ -478,6 +473,16 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
             <tr><td><span class="path">캔버스</span></td><td>빈 공간의 배경 색이나 흐림</td></tr>
           </tbody>
         </table></div>
+        <div class="tbl"><table>
+          <thead><tr><th>처음 듣는 말</th><th>뜻</th></tr></thead>
+          <tbody>
+            <tr><td>클립</td><td>타임라인 위의 사진·영상 한 조각</td></tr>
+            <tr><td>분할</td><td>흰 세로선 자리에서 클립을 둘로 자르기</td></tr>
+            <tr><td>오버레이</td><td>영상 위에 사진·영상을 한 겹 더 올리기</td></tr>
+            <tr><td>내보내기</td><td>다 만든 것을 영상 파일로 저장하기</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><b>캡컷은 무료로 충분해요</b>보석(💎)이나 Pro 표시가 붙은 것만 유료예요. 이 표시만 피하면 돼요.</div>
         <div class="tip"><b>클립을 누르면 메뉴가 바뀌어요</b>아무것도 누르지 않으면 전체 메뉴가, 클립을 누르면 그 클립을 고치는 메뉴가 나와요. 되돌리려면 화면의 되돌리기 화살표(↶)를 누르세요.</div>
       </div>
 
@@ -506,13 +511,26 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
         <div class="tip"><b>여기까지 만든 걸 복제해 두세요</b>편집 화면을 나와 캡컷 첫 화면의 프로젝트 목록에서 이 프로젝트의 <span class="path">⋯</span> → <span class="path">복제</span>. 하나는 영상 ①, 하나는 영상 ②로 써요.</div>
       </div>
 
+      <div class="step" id="s2-8">
+        <h3>자막 넣고 내 자막 모양 저장하기</h3>
+        <ol class="do">
+          <li><span class="path">텍스트 → 텍스트 추가</span> → 문구 입력</li>
+          <li><span class="path">글꼴</span>에서 굵은 글씨 고르기 (모르겠으면 프리텐다드)</li>
+          <li><span class="path">스타일</span> → 테두리(획) 두께 11~13 → 글자 사이 좁히기</li>
+          <li>두 손가락으로 크기 조절, 화면 가운데~살짝 아래에 두기</li>
+          <li>다음 자막은 첫 자막을 <span class="path">복사</span>해서 뒤로 옮기고 글만 바꾸기</li>
+        </ol>
+        <p><b>내 자막 모양 저장하기</b> : 텍스트 메뉴를 오른쪽 끝까지 밀기 → <span class="path">사전 설정 → + 사전 설정으로 저장</span>. 3~5회차에도 한 번에 불러 써요.</p>
+        <div class="tip"><b>한 화면에 한 문장</b>긴 자막은 읽기 전에 지나가요. 12자 안팎으로 짧게, 크게 쓰세요.</div>
+      </div>
+
       <div class="step" id="s2-5">
         <h3>영상 ① 차분한 느낌으로 만들기</h3>
         <ol class="do">
           <li>사진은 3초, 영상은 5초로 넉넉하게</li>
           <li><b>전환</b> : 클립 사이의 작은 네모(▢)를 누르기 → 부드럽게 겹치는 전환 하나 → <span class="path">모두 적용</span></li>
           <li><b>필터</b> : <span class="path">필터</span> → 따뜻한 느낌 하나 → 강도는 절반 정도</li>
-          <li><b>자막</b> : <span class="path">텍스트 추가</span> → <span class="path">스타일</span>에서 획 끄고 글로우만, 명조체 → <span class="path">애니메이션 → 인</span>에서 페이드 인</li>
+          <li><b>자막</b> : 저장한 자막 모양을 불러온 뒤 <span class="path">스타일</span>에서 획 끄고 글로우만, 명조체 → <span class="path">애니메이션 → 인</span>에서 페이드 인</li>
           <li><b>음악</b> : <span class="path">오디오 → 사운드</span>에서 "잔잔한", "피아노"로 검색</li>
         </ol>
       </div>
@@ -525,10 +543,22 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
           <li><b>속도</b> : 영상 클립 누르기 → <span class="path">속도</span> → 1.5배</li>
           <li><b>전환</b> : 없이 바로 넘기거나, 빠른 전환 하나만</li>
           <li><b>자막</b> : 굵은 글씨에 검정 획, 크게 → <span class="path">애니메이션 → 인</span>에서 튀어나오는 효과</li>
-          <li><b>효과음</b> : <span class="path">오디오 → 사운드 효과</span>에서 <code>Pop</code>, <code>whoosh</code>를 두세 곳에</li>
+          <li><b>효과음</b> : <span class="path">오디오 → 사운드 효과</span>에서 아래 검색어로 두세 곳에</li>
           <li><b>화면 효과</b> : <span class="path">효과</span> → 반짝이는 효과 하나를 짧게</li>
           <li><b>음악</b> : "신나는", "happy"로 검색</li>
         </ol>
+        <div class="tbl"><table>
+          <thead><tr><th>이럴 때</th><th>효과음 검색어</th><th>소리</th></tr></thead>
+          <tbody>
+            <tr><td>자막이 뿅 나올 때</td><td><code>Pop</code></td><td>뿅</td></tr>
+            <tr><td>장면 넘어갈 때</td><td><code>whoosh</code></td><td>휘익</td></tr>
+            <tr><td>결과 공개</td><td><code>wow</code> · <code>Glitter sound</code></td><td>반짝</td></tr>
+            <tr><td>반전 직전</td><td><code>dramatic reveal</code></td><td>두둥</td></tr>
+            <tr><td>정답·칭찬</td><td><code>bell</code></td><td>딩동</td></tr>
+            <tr><td>웃긴 순간 (한 번만)</td><td><code>vine boom</code></td><td>뷰웅</td></tr>
+          </tbody>
+        </table></div>
+        <p><b>두 영상 비교</b></p>
         <div class="tbl"><table>
           <thead><tr><th>설정</th><th>영상 ① 차분하게</th><th>영상 ② 경쾌하게</th></tr></thead>
           <tbody>
@@ -548,7 +578,7 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
         <ol class="do">
           <li>각 프로젝트에서 오른쪽 위 <span class="path">1080P</span> 확인 → 내보내기(↑) → 갤러리 저장</li>
           <li>자료모음 패들렛 → 내 이름 칸의 <span class="path">+</span> → 영상 ①, 영상 ② 올리기</li>
-          <li>두 영상 중 어느 쪽이 더 마음에 드는지 한 줄 적기</li>
+          <li>두 영상 중 어느 쪽이 더 마음에 드는지 한 줄 적기 (발표 없이 패들렛에서 서로 구경해요)</li>
         </ol>
         <details><summary>저장이 안 돼요 (내보내기가 막혀요)</summary><div><p>보석(💎) 표시가 있는 유료 효과나 스티커가 들어간 거예요. 그 효과를 지우거나 무료 효과로 바꾸세요.</p></div></details>
         <details><summary>영상을 다른 폰으로 옮기고 싶어요</summary><div><p>카카오톡으로 보내면 화질이 떨어져요. 구글 드라이브나 에어드롭, 퀵쉐어를 쓰세요.</p></div></details>
@@ -564,6 +594,10 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
       <p class="sub">조회수 잘 나온 쇼츠의 뼈대 빌리기</p>
     </div>
     <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>기획안 + 장면 그림 5~6장 + 그림으로 이어 본 쇼츠 맛보기</p></div></div>
+    <div class="flow">
+      <div><b>← 지난 시간에서</b><p>1회차 캐릭터가 잼의 주인공이 되고, 2회차에 저장한 자막 모양과 효과음을 써요.</p></div>
+      <div><b>다음 시간으로 →</b><p>오늘 만든 장면 그림과 🎬 영상 프롬프트는 4회차 Flow 재료예요.</p></div>
+    </div>
 
     <h3 class="label">오늘 배울 내용</h3>
     <ol class="toc">
@@ -657,6 +691,10 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
       <p class="sub">AI 그림을 움직이는 영상으로</p>
     </div>
     <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>제목 띠, 자막, 소리까지 들어간 완성 쇼츠 한 편</p></div></div>
+    <div class="flow">
+      <div><b>← 지난 시간에서</b><p>3회차 장면 그림과 잼이 준 🎬 영상 프롬프트로 Flow 영상을 만들어요.</p></div>
+      <div><b>다음 시간으로 →</b><p>오늘 완성한 쇼츠가 5회차에 유튜브에 올리는 첫 작품이에요.</p></div>
+    </div>
 
     <h3 class="label">오늘 배울 내용</h3>
     <ol class="toc">
@@ -733,6 +771,10 @@ footer{margin-top:48px;color:var(--ink-2);font-size:15px;text-align:center}
       <p class="sub">쇼츠 상영회</p>
     </div>
     <div class="result"><span class="dot"></span><div><b>오늘 만드는 것</b><p>쇼츠 한 편 더 + 내 유튜브 채널에 쇼츠 게시</p></div></div>
+    <div class="flow">
+      <div><b>← 지난 시간에서</b><p>4회차 완성 쇼츠를 올리고, 같은 잼 대화창에서 다음 편을 기획해요.</p></div>
+      <div><b>다음 시간으로 →</b><p>수업이 끝나도 같은 캐릭터와 기획 글로 매주 한 편씩 이어 가요.</p></div>
+    </div>
 
     <h3 class="label">오늘 배울 내용</h3>
     <ol class="toc">
